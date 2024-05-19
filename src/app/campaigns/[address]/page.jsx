@@ -2,23 +2,24 @@
 
 import { useEffect, useState } from "react";
 import getCampaign from "@/ethereum/campaign";
-import { Card } from "semantic-ui-react";
+import { Card, Grid } from "semantic-ui-react";
 import { web3 } from "@/ethereum/web3";
+import ContributeForm from "@/components/ContributeForm";
+import Link from "next/link";
 
 export default (props) => {
   const [campaign, setCampaign] = useState({});
   const [summary, setSummary] = useState({});
+  const [address, setAddress] = useState("");
   const [minimumContribution, setMinimumContribution] = useState(0n);
   const [balance, setBalance] = useState(0n);
   const [requestCount, setRequestCount] = useState(0n);
   const [approversCount, setApproversCount] = useState(0n);
   const [manager, setManager] = useState("");
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (loading) return;
     const loadCampaign = async () => {
-      setLoading(true);
+      setAddress(props.params.address);
       const campaignInstance = await getCampaign(props.params.address);
       const summary = await campaignInstance.methods.getSummary().call();
       console.log("getSummary():", summary, campaignInstance);
@@ -29,10 +30,9 @@ export default (props) => {
       setRequestCount(summary["2"]);
       setApproversCount(summary["3"]);
       setManager(summary["4"]);
-      setLoading(false);
     };
     loadCampaign();
-  }, [loading, props.params.address]);
+  }, []);
 
   function renderCampaignSummary() {
     const items = [
@@ -76,7 +76,19 @@ export default (props) => {
   return (
     <div>
       <h3>Campaign Details</h3>
-      {renderCampaignSummary()}
+      <Grid>
+        <Grid.Row>
+          <Grid.Column width={10}>{renderCampaignSummary()}</Grid.Column>
+          <Grid.Column width={6}>
+            <ContributeForm address={address} />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column width={16}>
+            <Link href={`/campaigns/${address}/requests`}>View Requests</Link>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     </div>
   );
 };
