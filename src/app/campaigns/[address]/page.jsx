@@ -10,7 +10,7 @@ import Link from "next/link";
 export default (props) => {
   const [campaign, setCampaign] = useState({});
   const [summary, setSummary] = useState({});
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState(props.params.address);
   const [minimumContribution, setMinimumContribution] = useState(0n);
   const [balance, setBalance] = useState(0n);
   const [requestCount, setRequestCount] = useState(0n);
@@ -19,7 +19,6 @@ export default (props) => {
 
   useEffect(() => {
     const loadCampaign = async () => {
-      setAddress(props.params.address);
       const campaignInstance = await getCampaign(props.params.address);
       const summary = await campaignInstance.methods.getSummary().call();
       console.log("getSummary():", summary, campaignInstance);

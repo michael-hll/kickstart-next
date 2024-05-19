@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <div>
       <h3>Open Campaigns</h3>
-      <Link href="/campaigns">
+      <Link href="/campaigns/create">
         <Button
           content="Create Campaign"
           icon="add circle"

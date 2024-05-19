@@ -6,7 +6,7 @@ import factory from "@/ethereum/factory";
 import { web3 } from "@/ethereum/web3";
 import { useRouter } from "next/navigation";
 
-export default (props) => {
+export default function createCampaign(props) {
   const [minimumContribution, setMinimumContribution] = useState(0);
   const [errorMessages, setErrorMessages] = useState("");
   const [createEnabled, setCreateEnabled] = useState(true);
@@ -61,4 +61,4 @@ export default (props) => {
       </Form>
     </div>
   );
-};
+}

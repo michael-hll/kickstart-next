@@ -60,8 +60,10 @@ contract Campaign {
             msg.value >= minimumContribution,
             "A minumum contribution is required."
         );
-        approvers[msg.sender] = true;
-        approversCount++;
+        if (!approvers[msg.sender]) {
+            approvers[msg.sender] = true;
+            approversCount++;
+        }
     }
 
     function createRequest(
@@ -72,7 +74,7 @@ contract Campaign {
         Request storage r = requests[numRequests++];
         r.description = description;
         r.value = value;
-        r.recipient = recipient;
+        r.recipient = recipient; // who should receive the payment
         r.complete = false;
         r.approvalCount = 0;
     }

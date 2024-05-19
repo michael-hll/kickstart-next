@@ -15,7 +15,7 @@ export default () => {
           <Link href="/">Campaigns</Link>
         </Menu.Item>
         <Menu.Item name="add">
-          <Link href="/campaigns">+</Link>
+          <Link href="/campaigns/create">+</Link>
         </Menu.Item>
       </Menu.Menu>
     </Menu>
