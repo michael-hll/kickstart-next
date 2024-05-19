@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This repository is a workable source code of a UDEMY course with latest Nextjs and Solidity:
 
-## Getting Started
+## Ethereum and Solidity The Complete Developers Guide by Stephen
 
-First, run the development server:
+Since the original course source code is not available or using older version of Next.js, I created this repository fixed the issues when using Next.js 14 with a semantic UI and a basic Ethereum smart contract.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+The overall strucutre of the code is similar to the author's original course, you can just watching the author's video and looking at this source code.
+
+Some key steps to get started:
+
+- Clone of download this project to your local pc
+- Go to the root directory of this project from terminal
+- Install dependencies: `npm install`
+- Compile the smart contract:`npm run compile`
+- Deploy the smart contract to a blockchain: `npm run deploy` (make sure fill out the blockchain network and your metamask account in .env file, see example of .env file from below)
+- Start the Next.js app: `npm run dev`
+  Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## .env Example
+
+Create the .env file in the root directory of the project:
+
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+SEPOLIA_ENDPOINT=https://sepolia.infura.io/v3/<private key>
+ACCOUNT_MNEMONIC=<your mnemonic>
+```
