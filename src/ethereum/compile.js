@@ -4,13 +4,21 @@ const fs = require("fs-extra");
 const { writeFile } = require('../utils/write');
 
 const buildPath = path.resolve(__dirname, "build");
-const contractFileName = "Campaign.sol";
+let contractFileName = "Campaign.sol";
+
+if (process.argv.length > 2 && process.argv[2].endsWith('.sol')) {
+  contractFileName = process.argv[2];
+}
 
 // Delete the current build folder.
 fs.removeSync(buildPath);
 
-const campaignPath = path.resolve(__dirname, "contracts", contractFileName);
-const source = fs.readFileSync(campaignPath, "utf8");
+const contractPath = path.resolve(__dirname, "contracts", contractFileName);
+if (fs.existsSync(contractPath) === false) {
+  console.log(`Contract path doesn't exist: ${contractPath}`);
+  return;
+}
+const source = fs.readFileSync(contractPath, "utf8");
 
 /***
  * The recommended way to interface with the Solidity compiler, especially for more
