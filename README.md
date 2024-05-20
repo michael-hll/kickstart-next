@@ -1,4 +1,4 @@
-This repository is a workable source code of a UDEMY course with latest Nextjs and Solidity:
+This repository is a workable source code of a UDEMY course with latest Nextjs and Solidity (Only the kickstart project, for the others please refer to my another reposioty: etherstudy):
 
 ## Ethereum and Solidity The Complete Developers Guide by Stephen
 
