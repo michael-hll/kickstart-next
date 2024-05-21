@@ -15,6 +15,7 @@ Some key steps to get started:
 - Deploy the smart contract to a blockchain: `npm run deploy` (make sure fill out the blockchain network and your metamask account in .env file, see example of .env file from below)
 - Start the Next.js app: `npm run dev`
   Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Finally replace the campaign factory address in the 'factory.js' file with your own deployed contract address.
 
 ## .env Example
 
