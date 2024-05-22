@@ -13,9 +13,9 @@ Some key steps to get started:
 - Install dependencies: `npm install`
 - Compile the smart contract:`npm run compile`
 - Deploy the smart contract to a blockchain: `npm run deploy` (make sure fill out the blockchain network and your metamask account in .env file, see example of .env file from below)
+- After running the deploy command, copy the deployed contract address to the .env file.
 - Start the Next.js app: `npm run dev`
   Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-- Finally replace the campaign factory address in the 'factory.js' file with your own deployed contract address.
 
 ## .env Example
 
@@ -24,4 +24,5 @@ Create the .env file in the root directory of the project:
 ```
 SEPOLIA_ENDPOINT=https://sepolia.infura.io/v3/<private key>
 ACCOUNT_MNEMONIC=<your mnemonic>
+CAMPAIGN_FACTORY_ADDRESS=<your deployed campaign factory address>
 ```
